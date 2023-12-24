@@ -16,8 +16,8 @@ fn get_game_code(input: &str) -> u32 {
     let mut code: u32 = 0;
 
     for game in games.iter() {
-        let parts: Vec<_> = game.split(":").collect();
-        let game_id: u32 = parts[0].chars().skip(5).collect::<String>().parse::<u32>().unwrap_or(0);
+        let parts: Vec<&str> = game.split(":").collect();
+        let game_id: u32 = parts[0][5..].parse::<u32>().unwrap_or(0);
         let mut is_valid: bool = true;
 
         for draw_group in parts[1].split(";") {
